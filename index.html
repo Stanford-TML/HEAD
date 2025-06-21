@@ -6,11 +6,11 @@
 
 <html lang="en">
 <head>
-	<title>ARCap: Collecting High-quality Human Demonstrations for Robot Learning with Augmented Reality Feedback</title>
+	<title>Hand-Eye Autonomous Delivery: Learning Humanoid Navigation, Locomotion and Reaching</title>
     <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/
         if you update and want to force Facebook to re-scrape. -->
 	<meta property="og:image" content="./resources/teaser.png"/>
-	<meta property="og:title" content="ARCap: Collecting High-quality Human Demonstrations for Robot Learning with Augmented Reality Feedback" />
+	<meta property="og:title" content="Hand-Eye Autonomous Delivery: Learning Humanoid Navigation, Locomotion and Reaching" />
 	<meta property="og:description" content="Paper description." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -43,13 +43,16 @@
         <a href="https://ericcsr.github.io/">Sirui Chen*</a><sup>1</sup>
     </div>
     <div class="author">
-        <a href="https://www.chenwangjeremy.net/">Chen Wang*</a><sup>1</sup>
+        <a href="https://judyye.github.io/">Yufei Ye*</a><sup>1</sup>
     </div>
     <div class="author">
-        <a href="">Kaden Nguyen</a><sup>1</sup>
+        <a href="https://zi-ang-cao.github.io/">Zi-Ang Cao*</a><sup>1</sup>
     </div>
     <div class="author">
-        <a href="https://scholar.google.com/citations?user=rDfyQnIAAAAJ&hl=en">Li Fei-Fei</a><sup>1</sup>
+        <a href="https://pei-xu.github.io/">Pei Xu</a><sup>1</sup>
+    </div>
+    <div class="author">
+        <a href="">Jennifer Lew</a><sup>1</sup>
     </div>
     <div class="author">
         <a href="https://tml.stanford.edu/people/karen-liu">C. Karen Liu</a><sup>1</sup>
@@ -68,15 +71,14 @@
     <br>
     <br>
 
-    <div class="links"><a href="https://arxiv.org/abs/2410.08464">[Paper]</a></div>
-    <div class="links"><a href="https://github.com/Ericcsr/ARCap.git">[Code]</a></div>
-    <div class="links"><a href="https://huggingface.co/Ericcsr/ARCap_DP">[Model]</a></div>
-    <div class="links"><a href="https://huggingface.co/datasets/Ericcsr/ARCap">[Data]</a></div>
+    <div class="links"><a href="">[Paper]</a></div>
+    <div class="links"><a href="">[Code]</a></div>
+    <div class="links"><a href="">[Model]</a></div>
 
     <br>
     <br>
     <div class="video-container">
-        <iframe src="./resources/teaser.mp4" frameBorder="0"
+        <iframe src="./resources/head_teaser.mp4" frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
     </div>
@@ -86,99 +88,80 @@
 
     <h1>Abstract</h1>
     <p>
-        Recent progress in imitation learning from human demonstrations has shown promising results in teaching robots manipulation skills. To further scale up training datasets, recent works start to use portable data collection devices without the need for physical robot hardware. However, due to the absence of on-robot feedback during data collection, the data quality depends heavily on user expertise, and many devices are limited to specific robot embodiments. We propose ARCap, a portable data collection system that provides visual feedback through augmented reality (AR) and haptic warnings to guide users in collecting high-quality demonstrations. Through extensive user studies, we show that ARCap enables novice users to collect robot-executable data that matches robot kinematics and avoids collisions with the scenes. With data collected from ARCap, robots can perform challenging tasks, such as manipulation in cluttered environments and long-horizon cross-embodiment manipulation. ARCap is fully open-source and easy to calibrate; all components are built from off-the-shelf products.
+        We propose Hand-Eye Autonomous Delivery (HEAD), a framework that learns navigation, locomotion, and reaching skills for humanoids, directly from human motion and vision perception data. We take a modular approach where the high-level planner commands the target position and orientation of the hands and eyes of the humanoid, delivered by the low-level policy that controls the whole-body movements. Specifically, the low-level whole-body controller learns to track the three points (eyes, left hand, and right hand) from existing large-scale human motion capture data while high-level policy learns from human data collected by Aria glasses. Our modular approach decouples the ego-centric vision perception from physical actions, promoting efficient learning and scalability to novel scenes. We evaluate our method both in simulation and in the real-world, demonstrating humanoid's capabilities to navigate and reach in complex environments designed for humans.
     </p>
 
     <br><br><hr>
 
-    <h1>AR Feedbacks</h1>
-
+    <h1>Robot system setup</h1>
     <div class="teaser">
-        <img src="./resources/feedback.gif" alt="Feedback"/>
+        <img src="./resources/system.png" alt="Feedback"/>
         <br>
         <i>
-            ARCap send visual haptic feedback when virtual robot violate constraints.
+            Select a object on initial 2D image, robot navigate to reach the selected object
+        </i>
+    </div>
+
+    <h1>Collecting navigation data</h1>
+
+    <div class="teaser">
+        <img src="./resources/data_collection.gif" alt="Feedback"/>
+        <br>
+        <i>
+            ADT dataset(400min) + Collected human data(60min) + Robot data(20min)
         </i>
     </div>
 
     <br><br><hr>
 
-    <h1>Portable System Design</h1>
+    
+    <h1>Navigation in different environment</h1>
 
     <div class="teaser">
-        <img src="./resources/system.png" alt="System"/>
+        <img src="./resources/rollout1.gif" alt="System"/>
         <br>
         <i>
-            ARCap is portable and can be carried inside one backpack.
+            Autonomous policy rollout.
         </i>
     </div>
 
     <br><br><hr>
 
-    <h1>Test-time Calibration</h1>
-
     <div class="teaser">
-        <img src="./resources/calibration.gif" alt="calibration"/>
+        <img src="./resources/rollout2.gif" alt="calibration"/>
         <br>
         <i>
-            With ARCap Unity App, hand eye calibration during test time become aligning virtual robot with the actual robot.
+            Autonomous policy rollout
+        </i>
+    </div>
+
+    <div class="teaser">
+        <img src="./resources/rollout3.gif" alt="calibration"/>
+        <br>
+        <i>
+            Autonomous policy rollout
+        </i>
+    </div>
+
+    <div class="teaser">
+        <img src="./resources/rollout4.gif" alt="calibration"/>
+        <br>
+        <i>
+            Autonomous policy rollout
         </i>
     </div>
 
     <br><br><hr>
 
-    <h1>Diffusion Policy trained from collected data</h1>
-    <h2>Manipulation in cluttered scene</h2>
+    <h1>Failure mode</h1>
+    
     <div class="teaser">
-        <img src="./resources/tennis.gif" alt="tennis"/>
+        <img src="./resources/failure mode.gif" alt="tennis"/>
         <br>
         <i>
-            Collected using 30 minutes data using ARCap, without data collected from teleoperation.
         </i>
     </div>
-    <h2>Long-horizon manipulation with different embodiment</h2>
-    <div class="teaser">
-        <img src="./resources/lego_new.gif" alt="lego"/>
-        <br>
-        <i>
-            Collected using 60 minutes data using ARCap, without data collected from teleoperation.
-        </i>
-    </div>
-    <h2>Cross embodiment bimanual manipulation</h2>
-    <div class="teaser">
-        <img src="./resources/bimanual.gif" alt="lego"/>
-        <br>
-        <i>
-            Collected using 60 minutes data using ARCap, without data collected from teleoperation.
-        </i>
-    </div>
-    <br><br><hr>
-
-    <h1>User Study</h1>
-
-    <div class="teaser">
-        <img src="./resources/demographic.png" alt="UserStudy"/>
-        <br>
-        <i>
-            We invite 20 users to collect data with ARCap and DexCap. They have different familiarity with robot learning and AR/VR.
-        </i>
-    </div>
-
-    <div class="teaser">
-        <img src="./resources/user_survey_result.png" alt="UserStudy2"/>
-        <br>
-        <i>
-            Most user find ARCap visual haptic feedback helpful
-        </i>
-    </div>
-
-    <div class="teaser">
-        <img src="./resources/user_policy.gif" alt="UserStudy3"/>
-        <br>
-        <i>
-            Combining data from 20 users, we can train autonomous policy
-        </i>
-    </div>
+    
 
     <!-- <h1>Compliant grasp resist perturbation</h1>
 
