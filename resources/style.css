@@ -164,3 +164,61 @@ a:hover {
     margin-left: 10px;
     margin-right: 45px;
 }
+
+/* Gallery styles */
+.gallery-container {
+    width: 90%;
+    margin: 0 auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 20px 0;
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on mobile */
+}
+
+.gallery-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+    margin-right: 20px;
+    white-space: normal;
+}
+
+.gallery-item:last-child {
+    margin-right: 0;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item i {
+    display: block;
+    margin-top: 10px;
+    font-style: italic;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+}
+
+/* Scrollbar styling for webkit browsers */
+.gallery-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.gallery-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.gallery-container::-webkit-scrollbar-thumb {
+    background: #8D0016;
+    border-radius: 4px;
+}
+
+.gallery-container::-webkit-scrollbar-thumb:hover {
+    background: #FF1447;
+}
